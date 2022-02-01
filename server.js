@@ -2,6 +2,7 @@ const search_engine = require("search-engine-nodejs").default;
 const express = require("express");
 const cors = require("cors");
 const server = express();
+const path = require("path");
 
 const searchEngine = async (q, page) => {
   const options = {
@@ -20,8 +21,14 @@ const searchEngine = async (q, page) => {
 server.use(express.json());
 server.use(cors());
 
-server.get("/", (req, res) => {
-  res.status(200).json({ message: "search engine running" });
+// server.get("/", (req, res) => {
+//   res.status(200).json({ message: "search engine running" });
+// });
+
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
 });
 
 server.post("/search", async (req, res) => {
