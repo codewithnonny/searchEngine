@@ -20,11 +20,11 @@ const searchEngine = async (q, page) => {
 server.use(express.json());
 server.use(cors());
 
-server.use(express.static(path.join(__dirname, "client/build")));
+server.use(express.static(path.join(__dirname, "../client/build")));
 console.log(__dirname);
 
 server.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client/build/index.html"));
+  res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
 });
 
 server.post("/search", async (req, res) => {
