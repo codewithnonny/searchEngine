@@ -25,9 +25,9 @@ server.use(cors());
 //   res.status(200).json({ message: "search engine running" });
 // });
 
-app.use(express.static(path.join(__dirname, "../client/build")));
+server.use(express.static(path.join(__dirname, "./client/build")));
 
-app.get("*", (req, res) => {
+server.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
 });
 
