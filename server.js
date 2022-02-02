@@ -12,7 +12,6 @@ const searchEngine = async (q, page) => {
     },
   };
 
-  // you can use: Aol, Ask, Baidu, Bing, Google or Yahoo
   const results = await search_engine.Yahoo(options);
 
   return results;
@@ -21,14 +20,10 @@ const searchEngine = async (q, page) => {
 server.use(express.json());
 server.use(cors());
 
-// server.get("/", (req, res) => {
-//   res.status(200).json({ message: "search engine running" });
-// });
-
 server.use(express.static(path.join(__dirname, "./client/build")));
 
 server.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
+  res.sendFile(path.resolve(__dirname, "./client/build/index.html"));
 });
 
 server.post("/search", async (req, res) => {
