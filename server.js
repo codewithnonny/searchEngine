@@ -21,6 +21,7 @@ server.use(express.json());
 server.use(cors());
 
 server.use(express.static(path.join(__dirname, "./client/build")));
+console.log(_dirname);
 
 server.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build/index.html"));
